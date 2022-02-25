@@ -3,7 +3,7 @@ var LinkedList = function() {
   list.head = null;
   list.tail = null;
 
-  list.addToTail = function(value) {
+  list.addToTail = function(value) { //Constant
     let newNode = Node(value);
     if (this.head === null) {
       this.head = newNode;
@@ -14,13 +14,13 @@ var LinkedList = function() {
     this.tail = newNode;
   };
 
-  list.removeHead = function() {
+  list.removeHead = function() { //Constant
     let out = this.head.value;
     this.head = this.head.next;
     return out;
   };
 
-  list.contains = function(target) {
+  list.contains = function(target) { //Linear
     currentNode = this.head;
 
     while (currentNode !== null) {
@@ -29,7 +29,6 @@ var LinkedList = function() {
       }
       currentNode = currentNode.next;
     }
-
     return false;
   };
 

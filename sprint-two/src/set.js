@@ -6,17 +6,17 @@ var Set = function() {
 
 var setPrototype = {};
 
-setPrototype.add = function(item) {
+setPrototype.add = function(item) { //Constant
   if (!this.contains(item)) {
     this._storage.push(item);
   }
 };
 
-setPrototype.contains = function(item) {
+setPrototype.contains = function(item) { //Linear
   return _.contains(this._storage, item);
 };
 
-setPrototype.remove = function(item) {
+setPrototype.remove = function(item) { //Linear
   if (this.contains(item)) {
     this._storage.splice(this._storage.indexOf(item), 1);
   }

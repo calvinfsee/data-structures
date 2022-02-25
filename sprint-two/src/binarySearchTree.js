@@ -6,7 +6,7 @@ var BinarySearchTree = function(value) {
   return tree;
 };
 
-BinarySearchTree.prototype.insert = function (insertedVal) {
+BinarySearchTree.prototype.insert = function (insertedVal) { //Logarithmic
   if (this.value < insertedVal) {
     if (this.right === null) {
       this.right = BinarySearchTree(insertedVal);
@@ -22,7 +22,7 @@ BinarySearchTree.prototype.insert = function (insertedVal) {
   }
 };
 
-BinarySearchTree.prototype.contains = function (target) {
+BinarySearchTree.prototype.contains = function (target) { //Logarithmic
   let foundMatch = false;
   if (this.value === target) {
     return true;
@@ -34,7 +34,7 @@ BinarySearchTree.prototype.contains = function (target) {
   return foundMatch;
 };
 
-BinarySearchTree.prototype.depthFirstLog = function (callback) {
+BinarySearchTree.prototype.depthFirstLog = function (callback) { //Linear
   callback(this.value);
   if (this.left !== null) {
     this.left.depthFirstLog(callback);

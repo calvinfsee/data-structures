@@ -1,6 +1,5 @@
 // Instantiate a new graph
 var Graph = function() {
-  // this.nodes = [];
   this.nodes = {};
 };
 
@@ -10,17 +9,17 @@ var GraphNode = function(value) {
 };
 
 // Add a node to the graph, passing in the node's value.
-Graph.prototype.addNode = function(value) {
+Graph.prototype.addNode = function(value) { //Constant
   this.nodes[value] = (new GraphNode(value));
 };
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
-Graph.prototype.contains = function(value) {
+Graph.prototype.contains = function(value) { //Linear
   return _.some(this.nodes, (node) => { return node.value === value; });
 };
 
 // Removes a node from the graph.
-Graph.prototype.removeNode = function(value) {
+Graph.prototype.removeNode = function(value) { //Linear
   this.nodes[value].edges.forEach((edge) => {
     this.removeEdge(value, edge);
   });
@@ -29,12 +28,12 @@ Graph.prototype.removeNode = function(value) {
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
-Graph.prototype.hasEdge = function(fromNode, toNode) {
+Graph.prototype.hasEdge = function(fromNode, toNode) { //Linear
   return _.contains(this.nodes[fromNode].edges, toNode);
 };
 
 // Connects two nodes in a graph by adding an edge between them.
-Graph.prototype.addEdge = function(fromNode, toNode) {
+Graph.prototype.addEdge = function(fromNode, toNode) { //Linear
   if (!this.hasEdge(fromNode, toNode)) {
     this.nodes[fromNode].edges.push(toNode);
     this.nodes[toNode].edges.push(fromNode);
@@ -42,7 +41,7 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 };
 
 // Remove an edge between any two specified (by value) nodes.
-Graph.prototype.removeEdge = function(fromNode, toNode) {
+Graph.prototype.removeEdge = function(fromNode, toNode) { //Linear
   if (this.hasEdge(fromNode, toNode)) {
     this.nodes[fromNode].edges.splice(this.nodes[fromNode].edges.indexOf(toNode), 1);
     this.nodes[toNode].edges.splice(this.nodes[toNode].edges.indexOf(fromNode), 1);
@@ -50,7 +49,7 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 };
 
 // Pass in a callback which will be executed on each node of the graph.
-Graph.prototype.forEachNode = function(cb) {
+Graph.prototype.forEachNode = function(cb) { //Linear
   _.each(this.nodes, (node) => {
     cb(node.value);
   });
