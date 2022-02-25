@@ -7,17 +7,19 @@ var BinarySearchTree = function(value) {
 };
 
 BinarySearchTree.prototype.insert = function (insertedVal) {
-  if (this.value < insertedVal) {
-    if (this.right === null) {
-      this.right = BinarySearchTree(insertedVal);
+  if (!this.contains(insertedVal)) {
+    if (this.value < insertedVal) {
+      if (this.right === null) {
+        this.right = BinarySearchTree(insertedVal);
+      } else {
+        this.right.insert(insertedVal);
+      }
     } else {
-      this.right.insert(insertedVal);
-    }
-  } else {
-    if (this.left === null) {
-      this.left = BinarySearchTree(insertedVal);
-    } else {
-      this.left.insert(insertedVal);
+      if (this.left === null) {
+        this.left = BinarySearchTree(insertedVal);
+      } else {
+        this.left.insert(insertedVal);
+      }
     }
   }
 };
