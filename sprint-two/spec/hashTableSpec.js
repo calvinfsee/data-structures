@@ -47,8 +47,18 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  it('should handle a large number of values', function () {
+    for (let i = 0; i < 1000; i++) {
+      hashTable.insert(i.toString(), i.toString());
+    }
+
+    for (let i = 0; i < 1000; i++) {
+      expect(hashTable.retrieve(i.toString())).to.equal(i.toString());
+    }
+  });
+
   // (Advanced! Remove the extra "x" when you want the following tests to run)
-  xit ('should double in size when needed', function() {
+  it ('should double in size when needed', function() {
     _.each(people, function(person) {
       var firstName = person[0];
       var lastName = person[1];
