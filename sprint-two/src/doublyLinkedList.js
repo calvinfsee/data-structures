@@ -79,7 +79,11 @@ var DoubleNode = function(value) {
  *
  * addToTail: O(1)
  *
+ * addToHead: O(1)
+ *
  * removeHead: O(1)
+ *
+ * removeTail: O(1)
  *
  * contains: O(n)
  */
