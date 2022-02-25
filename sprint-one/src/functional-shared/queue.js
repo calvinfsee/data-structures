@@ -27,26 +27,3 @@ var queueMethods = {
     return Object.keys(this.storage).length;
   }
 };
-
-queueMethods.size = function () {
-  return this.numValues;
-};
-
-queueMethods.enqueue = function (value) {
-  this.storage[this.startIndex + this.size()] = value;
-  this.numValues++;
-};
-
-queueMethods.dequeue = function () {
-  var out;
-
-  if (this.numValues > 0) {
-    out = this.storage[this.startIndex];
-    delete this.storage[this.startIndex];
-    this.numValues--;
-    this.startIndex++;
-  }
-
-
-  return out;
-};

@@ -21,24 +21,3 @@ var stackMethods = {
     return Object.keys(this.storage).length;
   }
 };
-
-stackMethods.size = function() {
-  var total = 0;
-
-  for (let i in this.storage) {
-    total++;
-  }
-
-  return total;
-};
-
-stackMethods.push = function(value) {
-  this.storage[this.size()] = value;
-};
-
-stackMethods.pop = function() {
-  var out = this.storage[this.size() - 1];
-  delete this.storage[this.size() - 1];
-
-  return out;
-};
