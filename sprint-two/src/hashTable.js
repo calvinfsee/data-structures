@@ -35,10 +35,17 @@ HashTable.prototype.remove = function(k) {
     for (let i = 0; i < this._storage.get(index).length; i++) {
       if (this._storage.get(index)[i][0] === k) {
         this._storage.get(index).splice(i, 1);
+        break;
       }
     }
   }
 };
 /*
  * Complexity: What is the time complexity of the above functions?
+ *
+ * Insert: O(n)
+ *
+ * retreive: O(n)
+ *
+ * remove: O(n)
  */
