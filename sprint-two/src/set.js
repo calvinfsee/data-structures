@@ -6,17 +6,17 @@ var Set = function() {
 
 var setPrototype = {};
 
-setPrototype.add = function(item) { //Constant
+setPrototype.add = function(item) {
   if (!this.contains(item)) {
     this._storage.push(item);
   }
 };
 
-setPrototype.contains = function(item) { //Linear
+setPrototype.contains = function(item) {
   return _.contains(this._storage, item);
 };
 
-setPrototype.remove = function(item) { //Linear
+setPrototype.remove = function(item) {
   if (this.contains(item)) {
     this._storage.splice(this._storage.indexOf(item), 1);
   }
@@ -24,4 +24,10 @@ setPrototype.remove = function(item) { //Linear
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ *
+ * add: O(1)
+ *
+ * contains: O(n)
+ *
+ * remove: O(n)
  */

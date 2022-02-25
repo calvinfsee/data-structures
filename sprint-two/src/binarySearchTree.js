@@ -6,23 +6,25 @@ var BinarySearchTree = function(value) {
   return tree;
 };
 
-BinarySearchTree.prototype.insert = function (insertedVal) { //Logarithmic
-  if (this.value < insertedVal) {
-    if (this.right === null) {
-      this.right = BinarySearchTree(insertedVal);
+BinarySearchTree.prototype.insert = function (insertedVal) {
+  if (!this.contains(insertedVal)) {
+    if (this.value < insertedVal) {
+      if (this.right === null) {
+        this.right = BinarySearchTree(insertedVal);
+      } else {
+        this.right.insert(insertedVal);
+      }
     } else {
-      this.right.insert(insertedVal);
-    }
-  } else {
-    if (this.left === null) {
-      this.left = BinarySearchTree(insertedVal);
-    } else {
-      this.left.insert(insertedVal);
+      if (this.left === null) {
+        this.left = BinarySearchTree(insertedVal);
+      } else {
+        this.left.insert(insertedVal);
+      }
     }
   }
 };
 
-BinarySearchTree.prototype.contains = function (target) { //Logarithmic
+BinarySearchTree.prototype.contains = function (target) {
   let foundMatch = false;
   if (this.value === target) {
     return true;
@@ -34,7 +36,7 @@ BinarySearchTree.prototype.contains = function (target) { //Logarithmic
   return foundMatch;
 };
 
-BinarySearchTree.prototype.depthFirstLog = function (callback) { //Linear
+BinarySearchTree.prototype.depthFirstLog = function (callback) {
   callback(this.value);
   if (this.left !== null) {
     this.left.depthFirstLog(callback);
@@ -42,9 +44,15 @@ BinarySearchTree.prototype.depthFirstLog = function (callback) { //Linear
   if (this.right !== null) {
     this.right.depthFirstLog(callback);
   }
-
 };
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ *
+ * Insert: O(log n) for a balanced tree
+ *
+ * Contains: O(log n)
+ *
+ * depthFirstLog: O(n)
+ *
  */

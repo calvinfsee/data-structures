@@ -51,5 +51,15 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
+  it('should be able to handle a large number of insertions and deletions', function () {
+    for (let i = 0; i < 1000; i++) {
+      linkedList.addToTail(i);
+    }
+
+    for (let i = 0; i < 1000; i++) {
+      expect(linkedList.removeHead()).to.equal(i);
+    }
+  });
+
   // add more tests here to test the functionality of linkedList
 });

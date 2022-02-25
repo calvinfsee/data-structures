@@ -68,4 +68,22 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+
+  it('should allow for a large number of nodes and edges', function() {
+    for (let i = 0; i < 1000; i++) {
+      graph.addNode(i);
+    }
+
+    for (let i = 0; i < 999; i++) {
+      graph.addEdge(i, i + 1);
+    }
+
+    for (let i = 0; i < 1000; i++) {
+      expect(graph.contains(i)).to.equal(true);
+    }
+
+    for (let i = 0; i < 999; i++) {
+      expect(graph.hasEdge(i, i + 1)).to.equal(true);
+    }
+  });
 });
